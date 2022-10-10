@@ -1,0 +1,29 @@
+---
+title: "Assignment3"
+author: "Sarah Chopra"
+date: "10/10/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Multiple Imputation
+
+Multiple imputation is method to solve the problem of missing data. It takes into consideration the uncertainty of missing data but generating multiple data sets which could contain the true value and might contain values very different from true value, but these datasets cover most/all of the possible scenarios about the true value. The values picked considers all the possibilities from these datasets. 
+
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
