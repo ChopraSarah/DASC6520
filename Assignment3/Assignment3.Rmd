@@ -14,8 +14,11 @@ knitr::opts_chunk$set(echo = TRUE)
 Multiple imputation is method to solve the problem of missing data. It takes into consideration the uncertainty of missing data but generating multiple data sets which could contain the true value and might contain values very different from true value, but these datasets cover most/all of the possible scenarios about the true value. The values picked considers all the possibilities from these datasets. 
 
 
-```{r cars}
-summary(cars)
+
+```{r pressure, echo=FALSE}
+data <- read.csv("/Users/sarah/Desktop/DirectedStudies/assignment3.csv",header=TRUE)
+print(data)
+plot(data)
 ```
 
 ## Including Plots
@@ -23,7 +26,36 @@ summary(cars)
 You can also embed plots, for example:
 
 ```{r pressure, echo=FALSE}
-plot(pressure)
+library(mice)
+md.pattern(data)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+sapply(data, function(x) sum(is.na(x)))
+
+```
+
+
+```{r}
+init = mice(data,m=5) 
+#init <- complete(init)
+print(init)
+```
+```{r}
+
+result_1 = complete(init,i)
+  summary(lm(Column1 ~ . , result_1))
+  result_2 = complete(init,i)
+  summary(lm(Column1 ~ . , result_2))
+  result_3 = complete(init,i)
+  summary(lm(Column1 ~ . , result_3))
+  result_4 = complete(init,i)
+  summary(lm(Column1 ~ . , result_4))
+  result_5 = complete(init,i)
+  summary(lm(Column1 ~ . , result_5))
+  result_6 = complete(init,i)
+  summary(lm(Column1 ~ . , result_6))
+```
+
+
